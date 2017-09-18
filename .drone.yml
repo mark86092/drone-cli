@@ -16,19 +16,9 @@ pipeline:
 
   snapshot:
     image: plugins/docker
-    repo: drone/cli
+    repo: mark86092/drone-cli
+    tag: 0.7
     secrets: [docker_username, docker_password]
     when:
-      branch: master
+      branch: 0.7
       event: push
-
-  release:
-    image: plugins/github-release
-    files:
-      - release/drone_*.tar.gz
-      - release/drone_checksums.txt
-    secrets:
-      - source: github_token
-        target: github_release_api_key
-    when:
-      event: tag
